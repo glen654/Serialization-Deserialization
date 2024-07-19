@@ -12,7 +12,7 @@ public class Student {
         studentDto.setAge("24");
         studentDto.setAddress("Panadura");
 
-        Student deserializedStudent;
+        StudentDto deserializedStudent;
 
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("studentObject.txt");
@@ -25,14 +25,14 @@ public class Student {
             FileInputStream fileInputStream = new FileInputStream("studentObject.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-            deserializedStudent = (Student) objectInputStream.readObject();
+            deserializedStudent = (StudentDto) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
 
             System.out.println("Deserialized Student");
-            System.out.println("Name :" + deserializedStudent.name);
-            System.out.println("Age: " + deserializedStudent.age);
-            System.out.println("Address: " + deserializedStudent.address);
+            System.out.println("Student Name: " + deserializedStudent.getName());
+            System.out.println("Student Age: " + deserializedStudent.getAge());
+            System.out.println("Student Address: " + deserializedStudent.getAddress());
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
