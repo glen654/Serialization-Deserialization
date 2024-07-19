@@ -12,9 +12,11 @@ public class Student {
         studentDto.setAge("24");
         studentDto.setAddress("Panadura");
 
+        //Declare a StudentDto type variable to hole the deserialized byte-stream
         StudentDto deserializedStudent;
 
         try {
+            // Serializing the Student Object into a studentObject.txt file
             FileOutputStream fileOutputStream = new FileOutputStream("studentObject.txt");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(studentDto);
@@ -22,9 +24,13 @@ public class Student {
             fileOutputStream.close();
             System.out.println("Student Object Serialized");
 
+            //Deserialization Process
+            // Get the FileInputStream to read data from a file
             FileInputStream fileInputStream = new FileInputStream("studentObject.txt");
+            //Retrieve and converts the student object from the byte-stream with the help of ObjectInputStream
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
+            //Use readObject method to deserialize objects
             deserializedStudent = (StudentDto) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
