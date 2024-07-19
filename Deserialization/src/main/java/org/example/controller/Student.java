@@ -3,7 +3,6 @@ package org.example.controller;
 import org.example.dto.StudentDto;
 
 import java.io.*;
-import java.sql.SQLOutput;
 
 public class Student {
     public static void main(String[] args) {
